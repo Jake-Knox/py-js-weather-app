@@ -1,0 +1,17 @@
+# Python virtual environment
+venv/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Flask environment variables
+.env
+
+# Editor-specific files
+.idea/
+.vscode/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
