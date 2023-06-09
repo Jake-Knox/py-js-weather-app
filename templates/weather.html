@@ -7,11 +7,9 @@
     <title>Weather App</title>
 </head>
 <body>
-    <h1>Da Weather</h1>
-    <form action="/weather" method="POST">
-        <label for="city">Enter City:</label>
-        <input type="text" id="city" name="city" required>
-        <button type="submit">Get Weather</button>
-    </form>
+    <h1>Weather Information</h1>
+    <p>Temperature: {{ temperature }}°C</p>
+    <p>Description: {{ description }}</p>
+    <a href="{{ url_for('index') }}">Back</a>
 </body>
 </html>
