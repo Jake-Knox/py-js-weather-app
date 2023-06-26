@@ -9,11 +9,13 @@
 </head>
 <body>
     <h1>Da Weather</h1>
-    <form action="/weather" method="POST">
-        <label for="city">Enter City:</label>
-        <input type="text" id="city" name="city" required>
-        <button type="submit">Get Weather</button>
-    </form>
+
+    <label for="searchInput">Enter Location:</label>
+    <input type="text" id="searchInput" name="searchInput" required>
+    <button id="searchButton">Search</button>
+
+    <div id="weatherContainer"></div>
+    
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
