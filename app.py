@@ -3,10 +3,12 @@ import requests
 from config import API_KEY
 app = Flask(__name__)
 
-app.route('/get_weather_data')
-def get_weather_data(location):
-    # location = request.args.get('location')
-    url = f'http://api.openweathermap.org/data/2.5/weather?q={location}&appid={API_KEY}'
+@app.route('/get_weather_data')
+def get_weather_data():
+    location = request.args.get('location')
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&appid={API_KEY}'
+
+    print(f'Location = {location}')
 
     response = requests.get(url)
     if response.status_code == 200:

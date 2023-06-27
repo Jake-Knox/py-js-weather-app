@@ -9,6 +9,8 @@ const descriptionResult = document.getElementById("descriptionResult");
 searchButton.addEventListener("click", () => {
 
   let location = searchInput.value;
+  console.log(location)
+  
   const url = `/get_weather_data?location=${location}`;
 
   fetch(url)
