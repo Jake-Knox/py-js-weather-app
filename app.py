@@ -3,35 +3,37 @@ import requests
 from config import API_KEY
 app = Flask(__name__)
 
-# Route to fetch API locations
-@app.route('/api/locations')
-def get_api_locations():
-    # Make a request to the OpenWeatherMap API to fetch the locations
-    url = f'http://api.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid={API_KEY}'
+app.route('/get_weather_data')
+def get_weather_data(location):
+    # location = request.args.get('location')
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={location}&appid={API_KEY}'
+
     response = requests.get(url)
-    
     if response.status_code == 200:
-        locations = response.json()
-        return jsonify(locations=locations)
+        data = response.json()
+
+        print(data)
+        
+        # process the data
+        temperature = data['main']['temp']
+        description = data['weather'][0]['description']
+
+        # use the weather data
+        print(f'Temperature: {temperature}')
+        print(f'Description: {description}')
+
+        weather_data = {
+            'temperature': temperature,
+            'description': description
+        }
+
+        return jsonify(weather_data)
     else:
-        return jsonify(error='Error fetching API locations'), 500
-
-# Route to fetch weather data for a specific location
-@app.route('/api/weather')
-def get_weather_data():
-    location = request.args.get('location')
-
-    # Make API call to retrieve weather data for the location
-    # Replace this with your actual code to fetch weather data using the OpenWeatherMap API
-
-    # Example response data
-    weather_data = {
-        'temperature': 25,
-        'description': 'Sunny',
-    }
-
-    return jsonify(weather_data)
-
+        print(f'Error getching weather data. Status code: {response.status_code}')
+        return jsonify({'error': 'Error fetching weather data'}), 404
+# # test
+# location = 'London'
+# get_weather_data(location)
 
 @app.route('/')
 def index():

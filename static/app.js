@@ -1,38 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-    fetch('/api/locations')
-      .then(response => response.json())
-      .then(data => {
-        const locations = data.locations;
-        console.log(locations); // Log the locations to the console
-  
-        // Call the function to initialize autocomplete with the locations
-        initializeAutocomplete(locations);
-      })
-      .catch(error => {
-        console.error('Error fetching API locations:', error);
-      });
-  });
-  
-  function initializeAutocomplete(locations) {
-    // Extract the location data for autocomplete suggestions
-    const suggestions = locations.list.map(location => ({
-      id: location.id,
-      name: location.name,
-      city: location.name,
-      weather: location.weather[0].description
-    }));
-  
-    // Initialize autocomplete on search input field using location data
-    // Use a JavaScript library like Autocomplete.js or jQuery UI Autocomplete
-  
-    // Example with Autocomplete.js library
-    new Autocomplete(searchInput, {
-      data: suggestions,
-      searchKey: 'name',
-      template: suggestion => {
-        return `<div>${suggestion.name}, ${suggestion.city} - ${suggestion.weather}</div>`;
-      }
-    });
-  }
 
-  
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+
+
+const temperatureResult = document.getElementById("temperatureResult");
+const descriptionResult = document.getElementById("descriptionResult");
+
+searchButton.addEventListener("click", () => {
+
+  let location = searchInput.value;
+  const url = `/get_weather_data?location=${location}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+
+      console.log(data);
+
+      // process data from the backend
+      let temperature = data.temperature;
+      let description = data.description;
+
+      // update the frontend
+      temperatureResult.textContent = temperature;
+      descriptionResult.textContent = description;
+    })
+    .catch(error => {
+      console.error('Error fetching weather data', error);
+    })
+})
