@@ -9,16 +9,25 @@
 </head>
 <body>
     <div id="content">
+        <div id="top-banner">
+
+        </div>
+
         <h1>Da Weather</h1>
     
-        <label for="searchInput">Enter Location:</label>
-        <input type="text" id="searchInput" name="searchInput" required>
-        <button id="searchButton">Search</button>
-    
-        <div id="weatherContainer">            
-            <h2 id="temperatureResult"></h2>    
-            <h2 id="descriptionResult"></h2>        
+        <div id="searchDiv" class="flex-row-between">
+            <label for="searchInput">Enter Location:</label>
+            <input type="text" id="searchInput" name="searchInput" required>
+            <button id="searchButton">Search</button>
+        </div>   
+
+        <h2 id="temperatureResult"></h2>    
+        <h2 id="descriptionResult"></h2> 
+
+        <div id="weatherContainer" class="flex-row-between">            
+                   
         </div>
+        
     </div>   
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
