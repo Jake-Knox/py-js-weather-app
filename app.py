@@ -19,14 +19,22 @@ def get_weather_data():
         # process the data
         temperature = data['main']['temp']
         description = data['weather'][0]['description']
+        feelsLike = data['main']['feels_like']
+        tempMin = data['main']['temp_min']
+        tempMax = data['main']['temp_max']
+        humidity = data['main']['humidity']
 
         # use the weather data
-        print(f'Temperature: {temperature}')
-        print(f'Description: {description}')
+        # print(f'Temperature: {temperature}')
+        # print(f'Description: {description}')
 
         weather_data = {
             'temperature': temperature,
-            'description': description
+            'description': description,
+            'feelsLike': feelsLike,
+            'tempMin': tempMin,
+            'tempMax': tempMax,
+            'humidity': humidity,
         }
 
         return jsonify(weather_data)

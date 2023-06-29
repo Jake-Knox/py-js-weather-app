@@ -2,9 +2,12 @@
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 
-
 const temperatureResult = document.getElementById("temperatureResult");
 const descriptionResult = document.getElementById("descriptionResult");
+
+let weatherData = []
+
+
 
 searchButton.addEventListener("click", () => {
 
@@ -24,7 +27,7 @@ searchButton.addEventListener("click", () => {
       let description = data.description;
 
       // update the frontend
-      temperatureResult.textContent = temperature;
+      temperatureResult.textContent = (`${temperature}°C`);
       descriptionResult.textContent = description;
     })
     .catch(error => {
