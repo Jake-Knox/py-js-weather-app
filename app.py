@@ -52,3 +52,12 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+
+
+# new idea
+# text file to store when a location is searched for 
+# new search will increase number
+# use to show top 5/10/etc places searched for when site loads
+# mainly a dev thing, wouldn't work well in proper site
+# but would look good for this kind of project
+# eg. Bolton,5 /n Manchester,10 /n Madrid, 13 etc
