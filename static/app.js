@@ -23,7 +23,7 @@ searchButton.addEventListener("click", () => {
     .then(response => response.json())
     .then(data => {
 
-      console.log(data);
+      // console.log(data);
 
       // process data from the backend
       let temperature = data.temperature;
