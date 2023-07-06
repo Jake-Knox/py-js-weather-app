@@ -4,10 +4,6 @@ const searchButton = document.getElementById("searchButton");
 
 const weatherContainer = document.getElementById("weatherContainer");
 
-// will be removed in the future - will generate content instead
-const temperatureResult = document.getElementById("temperatureResult");
-const descriptionResult = document.getElementById("descriptionResult");
-
 
 let weatherData = []
 
@@ -24,14 +20,6 @@ searchButton.addEventListener("click", () => {
     .then(data => {
 
       // console.log(data);
-
-      // process data from the backend
-      let temperature = data.temperature;
-      let description = data.description;
-
-      // update the frontend
-      temperatureResult.textContent = (`${temperature}°C`);
-      descriptionResult.textContent = description;
 
       generateWeatherDiv(location, data);
 
